@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Material, ScrapTable
+from .models import ActiveMaterial, ScrapTable
 
 
-@admin.register(Material)
+@admin.register(ActiveMaterial)
 class RegisterMaterial(admin.ModelAdmin):
     list_display = ('material_number', 'material_description')
 
@@ -10,4 +10,3 @@ class RegisterMaterial(admin.ModelAdmin):
 @admin.register(ScrapTable)
 class RegisterScrapTable(admin.ModelAdmin):
     list_display = ('material_number', 'quantity')
-

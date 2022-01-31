@@ -4,9 +4,9 @@ from .models import ActiveMaterial, ScrapTable
 
 @admin.register(ActiveMaterial)
 class RegisterMaterial(admin.ModelAdmin):
-    list_display = ('material_number', 'material_description')
+    list_display = ('material_number', 'material_description', 'inserted_on')
 
 
 @admin.register(ScrapTable)
 class RegisterScrapTable(admin.ModelAdmin):
-    list_display = ('material_number', 'quantity')
+    list_display = ('material_number', 'quantity', 'inserted_on')

@@ -11,7 +11,7 @@ def login_page(request):
 
 
 def input_page(request):
-    return HttpResponse('Input page coming soon...')
+    return HttpResponse(render(request, 'input.html'))
 
 
 def scan_page(request):

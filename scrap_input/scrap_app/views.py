@@ -3,20 +3,16 @@ from django.http import HttpResponse
 
 
 def home_page(request):
-    return HttpResponse('Home page coming soon...')
+    return HttpResponse(render(request, 'home.html'))
 
 
 def login_page(request):
-    return HttpResponse('Login page coming soon...')
+    return HttpResponse(render(request, 'login.html'))
 
 
 def input_page(request):
     return HttpResponse(render(request, 'input.html'))
 
 
-def scan_page(request):
-    return HttpResponse('Scan page coming soon...')
-
-
 def overview_page(request):
-    return HttpResponse('Overview page coming soon...')
+    return HttpResponse(render(request, 'overview.html'))

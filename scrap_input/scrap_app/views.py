@@ -1,18 +1,27 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from scrap_input.scrap_app.forms import ScrapTableForm
+from scrap_input.scrap_app.helpers import get_scrapped_today
 
 
 def home_page(request):
-    return HttpResponse(render(request, 'home.html'))
-
-
-def login_page(request):
-    return HttpResponse(render(request, 'login.html'))
+    return render(request, 'home.html')
 
 
 def input_page(request):
-    return HttpResponse(render(request, 'input.html'))
+    if request.method == 'POST':
+        form = ScrapTableForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('input')
+    else:
+        form = ScrapTableForm()
+    scrapped_today = get_scrapped_today()
+    context = {
+        'form': form,
+        'scrapped_today': scrapped_today,
+    }
+    return render(request, 'input.html', context)
 
 
 def overview_page(request):
-    return HttpResponse(render(request, 'overview.html'))
+    return render(request, 'overview.html')

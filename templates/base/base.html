@@ -5,25 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Scrap App Project</title>
-    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
 </head>
-<nav class="navbar navbar-dark bg-dark nav justify-content-center">
-    <ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'login' %}">Login</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'input' %}">Input</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'overview' %}">Overview</a>
-  </li>
-</ul>
+
+<nav class="stroke">
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'overview' %}">Overview</a></li>
+        <li><a href="{% url 'input' %}">Input</a></li>
+    </ul>
 </nav>
+
 <body>
+
 {% block content %}
 {% endblock %}
 </body>

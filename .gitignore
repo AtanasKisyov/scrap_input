@@ -1,3 +1,5 @@
 *__pycache__*
 .pyc
 .idea
+scrap_input/scrap_app/migrations
+scrap_input/user/migrations

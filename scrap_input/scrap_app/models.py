@@ -48,10 +48,18 @@ class Material(models.Model):
     material_weight = models.FloatField()
 
 
-# class ScrapTable(models.Model):
-#
-#     material_number = ''
-#     material_description = ''
-#     scrap_quantity = ''
-#     scrap_price = ''
-#     scrap_weight = ''
+class ScrapTable(models.Model):
+
+    material_number = models.CharField(
+        max_length=Material.MATERIAL_NUMBER_MAX_LENGTH,
+    )
+
+    material_description = models.CharField(
+        max_length=Material.MATERIAL_DESCRIPTION_MAX_LENGTH,
+    )
+
+    scrap_quantity = models.IntegerField()
+
+    scrap_price = models.FloatField()
+
+    scrap_weight = models.FloatField()

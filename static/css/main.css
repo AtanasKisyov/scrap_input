@@ -21,56 +21,27 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: #111;
+  transform: scale(1.15);
 }
 
-table {
-  width: 100%;
-}
-
-th, td {
-  text-align: center;
-  border: black;
-  padding: 16px 20px;
-  border-radius: 4px;
-  background-color: #f1f1f1;
-}
 nav {
 
   display: grid;
 }
 
-input, select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+input, textarea, select {
+    padding: 10px;
+    border: 0;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    width: 100%;
+    margin: 8px 0;
+    display: list-item;
+    box-sizing: border-box;
 }
 
-input[type=submit] {
-  width: 50%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
 button {
+  width: 100%;
   background-color: #04AA6D;
   border: none;
   color: white;
@@ -79,4 +50,11 @@ button {
   margin: 4px 2px;
   cursor: pointer;
   display: block;
+}
+
+.form_div {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

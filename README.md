@@ -8,11 +8,11 @@ User groups:
 3. Staff
 4. Administrator(super user)
 
-Scrappers and Controllers will be created only by staff members. 
+Scrappers and Controllers will be created only by staff members/not everyone should be allowed to make input/.
 
 Scrapper role is to register the material numbers and quantities in the application.
 
-Controller role is to see compare the input in the app vs the actual scrap that is handed to them(weight)
+Controller role is to compare the input in the app vs the actual scrap that is handed to them(weight)
 
 Staff users will be able to monitor the scrapped quantities and see automatically generated reports
 regarding most scrap coming from an area, problematic materials and user accuracy.

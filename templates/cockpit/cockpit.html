@@ -1,9 +1,9 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    <div class="form_div">
+    <div class="main_div container">
         <h1>Reports:</h1>
-        <ul class="form_div">
+        <ul class="main_div">
             <li><a href="#">Report by production</a></li>
             <li><a href="#">Report by area</a></li>
             <li><a href="#">Report by material</a></li>
@@ -11,12 +11,11 @@
         </ul>
     </div>
 
-    <div class="form_div">
+    <div class="main_div container">
         <h1>User activities:</h1>
-        <ul class="form_div">
-            <li><a href="#">List users</a></li>
+        <ul class="main_div">
+            <li><a href="{% url 'list_users' %}">List users</a></li>
             <li><a href="{% url 'create_user' %}">Create user</a></li>
-            <li><a href="#">Edit user</a></li>
         </ul>
     </div>
 {% endblock %}

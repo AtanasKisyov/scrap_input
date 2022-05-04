@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    <div class="form_div">
+    <div class="main_div">
         <form method="POST" action="{% url 'input' %}">
             {% csrf_token %}
             {{ form }}
@@ -9,26 +9,26 @@
         </form>
     </div>
 
-    {#    {% if scrapped_today %}#}
-    {#        <table>#}
-    {#            <tr>#}
-    {#                <th>User</th>#}
-    {#                <th>Area</th>#}
-    {#                <th>Material</th>#}
-    {#                <th>Quantity</th>#}
-    {#                <th>Created On</th>#}
-    {#            </tr>#}
-    {#            {% for row in scrapped_today %}#}
-    {#                <tr>#}
-    {#                    <td>{{ row.user }}</td>#}
-    {#                    <td>{{ row.area }}</td>#}
-    {#                    <td>{{ row.material_number }}</td>#}
-    {#                    <td>{{ row.quantity }}</td>#}
-    {#                    <td>{{ row.inserted_on }}</td>#}
-    {#                </tr>#}
-    {#            {% endfor %}#}
-    {#        </table>#}
-    {#    {% else %}#}
-    {#        <h2>There are no scrapped materials today</h2>#}
-    {#    {% endif %}#}
+{#        {% if scrapped_today %}#}
+{#            <table>#}
+{#                <tr>#}
+{#                    <th>User</th>#}
+{#                    <th>Area</th>#}
+{#                    <th>Material</th>#}
+{#                    <th>Quantity</th>#}
+{#                    <th>Created On</th>#}
+{#                </tr>#}
+{#                {% for row in scrapped_today %}#}
+{#                    <tr>#}
+{#                        <td>{{ row.user }}</td>#}
+{#                        <td>{{ row.area }}</td>#}
+{#                        <td>{{ row.material_number }}</td>#}
+{#                        <td>{{ row.quantity }}</td>#}
+{#                        <td>{{ row.inserted_on }}</td>#}
+{#                    </tr>#}
+{#                {% endfor %}#}
+{#            </table>#}
+{#        {% else %}#}
+{#            <h2>There are no scrapped materials today</h2>#}
+{#        {% endif %}#}
 {% endblock %}

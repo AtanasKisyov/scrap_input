@@ -7,6 +7,9 @@
             {{ form }}
             <button>Save</button>
         </form>
+        {% if error %}
+            <p>Material does not exist!</p>
+        {% endif %}
     </div>
 
 {#        {% if scrapped_today %}#}

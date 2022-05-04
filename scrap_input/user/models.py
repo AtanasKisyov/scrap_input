@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+from scrap_input.scrap_app.models import Area, Production
 
 AuthUser = get_user_model()
 
@@ -38,6 +39,18 @@ class Profile(models.Model):
     user_role = models.CharField(
         max_length=max([len(choice) for choice, _ in USER_ROLES]),
         choices=USER_ROLES,
+    )
+
+    area = models.ForeignKey(
+        Area,
+        on_delete=models.CASCADE,
+        unique=False,
+    )
+
+    production = models.ForeignKey(
+        Production,
+        on_delete=models.CASCADE,
+        unique=False,
     )
 
     def __str__(self):

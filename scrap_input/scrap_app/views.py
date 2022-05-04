@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
 from django.shortcuts import redirect
 from django.views import generic as generic_views
@@ -13,7 +14,7 @@ class OverviewView(generic_views.TemplateView):
         return context
 
 
-class InputView(generic_views.CreateView):
+class InputView(LoginRequiredMixin, generic_views.CreateView):
     template_name = 'input.html'
     model = ScrapTable
     fields = ('material_number', 'scrap_quantity')

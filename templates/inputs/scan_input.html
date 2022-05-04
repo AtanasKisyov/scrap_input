@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="main_div">
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button>Save</button>
+        </form>
+        {% if error %}
+            <p>Material does not exist!</p>
+        {% endif %}
+    </div>
+{% endblock %}

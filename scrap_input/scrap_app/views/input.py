@@ -3,10 +3,11 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect, render
 from django.views import generic as generic_views
 
+from scrap_input.common_logic.mixins import CustomLoginRequiredMixin
 from scrap_input.scrap_app.models import ScrapTable, Material
 
 
-class InputView(LoginRequiredMixin, generic_views.CreateView):
+class InputView(CustomLoginRequiredMixin, generic_views.CreateView):
 
     VALIDATION_ERROR_MESSAGE = 'Material does not exist!'
     template_name = 'inputs/input.html'
@@ -46,7 +47,7 @@ class InputView(LoginRequiredMixin, generic_views.CreateView):
         return redirect('input')
 
 
-class ScanInputView(LoginRequiredMixin, generic_views.CreateView):
+class ScanInputView(CustomLoginRequiredMixin, generic_views.CreateView):
 
     VALIDATION_ERROR_MESSAGE = 'Material Does Not Exist!'
     SCAN_QUANTITY_VALUE = 1

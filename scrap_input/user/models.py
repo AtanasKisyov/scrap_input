@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.db import models
 
 from scrap_input.scrap_app.models import Area, Production
@@ -9,7 +10,9 @@ AuthUser = get_user_model()
 class UserProfile(models.Model):
 
     FIRST_NAME_MAX_LENGTH = 15
+    FIRST_NAME_MIN_LENGTH = 2
     LAST_NAME_MAX_LENGTH = 15
+    LAST_NAME_MIN_LENGTH = 2
 
     STAFF = 'Staff'
     CONTROLLER = 'Controller'
@@ -27,10 +30,18 @@ class UserProfile(models.Model):
 
     first_name = models.CharField(
         max_length=FIRST_NAME_MAX_LENGTH,
+        validators=(
+            MaxLengthValidator(FIRST_NAME_MAX_LENGTH),
+            MinLengthValidator(FIRST_NAME_MIN_LENGTH),
+        )
     )
 
     last_name = models.CharField(
         max_length=LAST_NAME_MAX_LENGTH,
+        validators=(
+            MaxLengthValidator(LAST_NAME_MAX_LENGTH),
+            MinLengthValidator(LAST_NAME_MIN_LENGTH),
+        )
     )
 
     user = models.OneToOneField(

@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views import generic as generic_views
 from django.contrib.auth import views as auth_views, get_user_model
 
+from scrap_input.common_logic.mixins import CustomLoginRequiredMixin
 from scrap_input.scrap_app.models import Area, Production
 from scrap_input.user.models import UserProfile
 
@@ -19,7 +20,7 @@ class LoginView(auth_views.LoginView):
         return reverse_lazy('cockpit')
 
 
-class CreateUserView(LoginRequiredMixin, generic_views.CreateView):
+class CreateUserView(CustomLoginRequiredMixin, generic_views.CreateView):
     template_name = 'user/create_user.html'
     model = UserProfile
     fields = ('employee_id', 'first_name', 'last_name', 'user_role', 'area', 'production')
@@ -53,14 +54,14 @@ class CreateUserView(LoginRequiredMixin, generic_views.CreateView):
         return redirect('cockpit')
 
 
-class EditUserView(LoginRequiredMixin, generic_views.UpdateView):
+class EditUserView(CustomLoginRequiredMixin, generic_views.UpdateView):
     template_name = 'user/update_user.html'
     model = UserProfile
     fields = ('employee_id', 'first_name', 'last_name', 'user_role', 'area', 'production')
     success_url = reverse_lazy('list_users')
 
 
-class DeleteUserView(LoginRequiredMixin, generic_views.DeleteView):
+class DeleteUserView(CustomLoginRequiredMixin, generic_views.DeleteView):
     template_name = 'user/delete_user.html'
     model = UserProfile
     success_url = reverse_lazy('list_users')
@@ -74,7 +75,7 @@ class DeleteUserView(LoginRequiredMixin, generic_views.DeleteView):
         return redirect('list_users')
 
 
-class ListUsersView(LoginRequiredMixin, generic_views.ListView):
+class ListUsersView(CustomLoginRequiredMixin, generic_views.ListView):
     template_name = 'user/list_users.html'
     model = UserProfile
 

@@ -1,8 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-AuthUser = get_user_model()
-
 
 class Production(models.Model):
 
@@ -68,6 +66,6 @@ class ScrapTable(models.Model):
     scrap_weight = models.FloatField()
 
     scrapper = models.ForeignKey(
-        AuthUser,
+        get_user_model(),
         on_delete=models.PROTECT,
     )

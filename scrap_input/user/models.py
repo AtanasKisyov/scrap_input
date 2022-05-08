@@ -6,7 +6,7 @@ from scrap_input.scrap_app.models import Area, Production
 AuthUser = get_user_model()
 
 
-class Profile(models.Model):
+class UserProfile(models.Model):
 
     FIRST_NAME_MAX_LENGTH = 15
     LAST_NAME_MAX_LENGTH = 15
@@ -21,7 +21,9 @@ class Profile(models.Model):
         (SCRAPPER, SCRAPPER),
     )
 
-    employee_id = models.IntegerField()
+    employee_id = models.IntegerField(
+        unique=True,
+    )
 
     first_name = models.CharField(
         max_length=FIRST_NAME_MAX_LENGTH,

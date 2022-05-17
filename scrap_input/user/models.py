@@ -14,11 +14,13 @@ class UserProfile(models.Model):
     LAST_NAME_MAX_LENGTH = 15
     LAST_NAME_MIN_LENGTH = 2
 
+    UNCATEGORIZED = 'Uncategorized'
     STAFF = 'Staff'
     CONTROLLER = 'Controller'
     SCRAPPER = 'Scrapper'
 
     USER_ROLES = (
+        (UNCATEGORIZED, UNCATEGORIZED),
         (STAFF, STAFF),
         (CONTROLLER, CONTROLLER),
         (SCRAPPER, SCRAPPER),
@@ -52,6 +54,7 @@ class UserProfile(models.Model):
     user_role = models.CharField(
         max_length=max([len(choice) for choice, _ in USER_ROLES]),
         choices=USER_ROLES,
+        default=UNCATEGORIZED,
     )
 
     area = models.ForeignKey(

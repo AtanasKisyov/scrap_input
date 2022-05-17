@@ -1,4 +1,3 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic as generic_views
@@ -20,10 +19,10 @@ class LoginView(auth_views.LoginView):
         return reverse_lazy('cockpit')
 
 
-class CreateUserView(CustomLoginRequiredMixin, generic_views.CreateView):
+class CreateUserView(generic_views.CreateView):
     template_name = 'user/create_user.html'
     model = UserProfile
-    fields = ('employee_id', 'first_name', 'last_name', 'user_role', 'area', 'production')
+    fields = ('employee_id', 'first_name', 'last_name', 'area', 'production')
     success_url = reverse_lazy('cockpit')
 
     def post(self, request, *args, **kwargs):

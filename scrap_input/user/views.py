@@ -28,7 +28,6 @@ class CreateUserView(generic_views.CreateView):
     def post(self, request, *args, **kwargs):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
-        user_role = request.POST['user_role']
         employee_id = request.POST['employee_id']
         area_id = request.POST['area']
         area = Area.objects.get(id=area_id)
@@ -44,7 +43,6 @@ class CreateUserView(generic_views.CreateView):
             first_name=first_name,
             last_name=last_name,
             employee_id=employee_id,
-            user_role=user_role,
             area=area,
             production=production,
             user=user,

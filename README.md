@@ -8,7 +8,7 @@ User groups:
 3. Staff
 4. Administrator(super user)
 
-Scrappers and Controllers will be created only by staff members/not everyone should be allowed to make input/.
+Scrappers and Controllers will be created only by staff members/not everyone should be allowed to make input.
 
 Scrapper role is to register the material numbers and quantities in the application.
 

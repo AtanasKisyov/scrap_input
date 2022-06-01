@@ -6,7 +6,7 @@ from scrap_input.scrap_app.views.maintenance.maintenance import CreateProduction
     CreateAreaView, EditAreaView
 
 urlpatterns = [
-    path('cockpit/', CockpitView.as_view(), name='cockpit'),
+    path('', CockpitView.as_view(), name='cockpit'),
     path('cockpit/maintenance/production', CreateProductionView.as_view(), name='create_production'),
     path('cockpit/maintenance/production/int:<pk>', EditProductionView.as_view(), name='edit_production'),
     path('cockpit/maintenance/area', CreateAreaView.as_view(), name='create_area'),

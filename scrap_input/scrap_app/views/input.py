@@ -1,10 +1,10 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect, render
 from django.views import generic as generic_views
 
 from scrap_input.common_logic.mixins import CustomLoginRequiredMixin
 from scrap_input.scrap_app.models import ScrapTable, Material
+from scrap_input.scrap_app.utils import update_user_scrap_weight
 
 
 class InputView(CustomLoginRequiredMixin, generic_views.CreateView):
@@ -21,6 +21,7 @@ class InputView(CustomLoginRequiredMixin, generic_views.CreateView):
             material_number = request.POST['material_number']
             material = Material.objects.get(material_number=material_number)
 
+            scrapper_id = request.user.id
             material_description = material.material_description
             quantity = int(request.POST.get('scrap_quantity', 1))
             material_price = material.material_price * quantity
@@ -32,9 +33,11 @@ class InputView(CustomLoginRequiredMixin, generic_views.CreateView):
                 scrap_quantity=quantity,
                 scrap_price=material_price,
                 scrap_weight=material_weight,
+                scrapper_id=scrapper_id
             )
 
             scrap.save()
+            update_user_scrap_weight(scrapper_id, material, quantity)
 
         except ObjectDoesNotExist:
 
@@ -61,6 +64,7 @@ class ScanInputView(CustomLoginRequiredMixin, generic_views.CreateView):
             material_number = request.POST['material_number']
             material = Material.objects.get(material_number=material_number)
 
+            scrapper_id = request.user.id
             material_description = material.material_description
             quantity = ScanInputView.SCAN_QUANTITY_VALUE
             material_price = material.material_price * quantity
@@ -72,9 +76,11 @@ class ScanInputView(CustomLoginRequiredMixin, generic_views.CreateView):
                 scrap_quantity=quantity,
                 scrap_price=material_price,
                 scrap_weight=material_weight,
+                scrapper_id=scrapper_id,
             )
 
             scrap.save()
+            update_user_scrap_weight(request.user, material, quantity)
 
         except ObjectDoesNotExist:
 

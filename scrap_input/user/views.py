@@ -33,7 +33,7 @@ class CreateUserView(generic_views.CreateView):
         area = Area.objects.get(id=area_id)
         production_id = request.POST['production']
         production = Production.objects.get(id=production_id)
-        username = f'{employee_id}_{first_name}_{last_name}'
+        username = employee_id
         user = AuthUser(
             username=username,
         )

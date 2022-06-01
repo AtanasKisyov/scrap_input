@@ -3,6 +3,8 @@ from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.db import models
 
 
+AuthUser = get_user_model()
+
 class Production(models.Model):
 
     PRODUCTION_NAME_MAX_LENGTH = 15
@@ -95,6 +97,22 @@ class ScrapTable(models.Model):
     scrap_weight = models.FloatField()
 
     scrapper = models.ForeignKey(
-        get_user_model(),
+        AuthUser,
         on_delete=models.PROTECT,
+    )
+
+
+class CompareScrapTable(models.Model):
+
+    user_id = models.ForeignKey(
+        AuthUser,
+        on_delete=models.PROTECT,
+    )
+
+    registered_weight = models.FloatField(
+        default=0.0,
+    )
+
+    actual_weight = models.FloatField(
+        default=0.0,
     )
